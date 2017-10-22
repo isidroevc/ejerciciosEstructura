@@ -1,17 +1,42 @@
-package Ejercicio2;
-
 public class Rational implements Rationalizable {
     // -Propiedades.
     private int numerator;
     private int denominator;
+
+    public static Rational parse(String s) throws Exception{
+        String[] parts = s.split("/");
+        Rational result = null;
+        int n, d;
+        if(parts.length > 2)
+            throw new Exception("Entrada con formato invalido: " + s);
+        else if(parts.length == 2){
+            try{
+                n = Integer.parseInt(parts[0]);
+                d = Integer.parseInt(parts[1]);
+                result = new Rational(n,d);
+            } catch(Exception ex){
+                 throw new Exception("Entrada con formato invalido: " + s);
+            }
+        } else if(parts.length == 0){
+            try{
+                n = Integer.parseInt(s);
+                result = new Rational(n,1);
+            } catch(Exception ex){
+                throw new Exception("Entrada con formato invalido: " + s);
+            }
+        }
+        return result;
+    }
 
     // -Constructores.
 
     public Rational(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
-        if(this.denominator < 0 ) 
+        if(this.denominator < 0 ) {
             this.numerator *= -1;
+            this.denominator *= -1;
+        }
     }
 
     public Rational() {}
@@ -83,7 +108,7 @@ public class Rational implements Rationalizable {
             resultD = (int)Math.pow(this.numerator, e);
             resultN = (int)Math.pow(this.denominator, e);
         }
-        return new Rational(resultN, resultN);
+        return new Rational(resultN, resultD);
     }
     public Rational negation(){
         return new Rational(-this.numerator, this.denominator);
@@ -98,7 +123,7 @@ public class Rational implements Rationalizable {
         double rval = r.getNumerator() / r.getDenominator();
         return current <= rval;
     }
-
+    @Override
     public boolean equals(Rational r) {
         double current = this.numerator /this.denominator;
         double rval = r.getNumerator() / r.getDenominator();
@@ -111,6 +136,9 @@ public class Rational implements Rationalizable {
         return current >= rval;
     }
 
+    public boolean notEquals(Rational r) {
+        return !this.equals(r);
+    }
     @Override
     public String toString() {
         return this.numerator + "/" + this.denominator;

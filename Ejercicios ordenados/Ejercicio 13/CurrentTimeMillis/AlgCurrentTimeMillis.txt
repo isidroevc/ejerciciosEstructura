@@ -1,0 +1,15 @@
+/*
+  29 Septiembre 2017
+  Ejercicio 13
+*/
+
+1.Meta: Algoritmo capaz de utilizar la clase System con el método currentTimeMillis()
+para determinar el tiempo transcurrido durante la ejecución de un programa.
+2.Datos:
+    inicio=System.currentTimeMillis();
+3.Cálculos:
+    fin=System.currentTimeMillis();
+    totalM=fin-inicio;
+4.Procedimientos:
+    Escribir("Tiempo transcurrido: "+totalM+" milisegundos.");
+5.Navegabilidad: No hay.

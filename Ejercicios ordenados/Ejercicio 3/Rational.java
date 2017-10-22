@@ -9,8 +9,10 @@ public class Rational implements Rationalizable {
     public Rational(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
-        if(this.denominator < 0 ) 
+        if(this.denominator < 0 ) {
             this.numerator *= -1;
+            this.denominator *= -1;
+        }
     }
 
     public Rational() {}
@@ -82,7 +84,7 @@ public class Rational implements Rationalizable {
             resultD = (int)Math.pow(this.numerator, e);
             resultN = (int)Math.pow(this.denominator, e);
         }
-        return new Rational(resultN, resultN);
+        return new Rational(resultN, resultD);
     }
     public Rational negation(){
         return new Rational(-this.numerator, this.denominator);
@@ -97,7 +99,7 @@ public class Rational implements Rationalizable {
         double rval = r.getNumerator() / r.getDenominator();
         return current <= rval;
     }
-
+    @Override
     public boolean equals(Rational r) {
         double current = this.numerator /this.denominator;
         double rval = r.getNumerator() / r.getDenominator();

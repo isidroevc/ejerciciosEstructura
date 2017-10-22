@@ -1,4 +1,3 @@
-package Ejercicio2;
 
 public interface Rationalizable {
     public Rational addition(Rational r);
@@ -11,4 +10,4 @@ public interface Rationalizable {
     public boolean lessEquals(Rational r);
     public boolean greaterEquals(Rational r);
     public boolean equals(Rational r);
-}
+}  

@@ -1,0 +1,43 @@
+/*
+  02 Octubre 2017
+  Ejercicio 16: recursividad Serie Fibonacci
+*/
+
+1.Meta: Desplegar los primeros n términos de la Serie Fibonacci.
+2.Datos:
+    c=10;
+    f0=0;
+    f1=1;
+    aux="Iterativamente: "+f0;
+    fr=0;
+    aux1="Recursivamente: 0";
+3.Cálculos:;
+    3.1 iterativo(int n);
+        Empezar desde i=2; hasta i<n; incrementar i;
+            fn=f0+f1;
+            aux+=","+fn;
+            f0=f1;
+            f1=fn;
+        Terminar
+        Retornar aux;
+    Terminar
+    
+    3.2 recursivo(int n);
+        Si(n<=1)
+            fr=n;
+        Si no
+            fr=recursivo(n-1)+recursivo(n-2);
+        Retornar fr;
+    Terminar
+4.Resultados: Escribir(c+" términos:");
+    4.1 Escribir(aux);
+    Terminar
+    
+    4.2 recursivoP();
+        Empezar desde i=1; hasta i<c; incrementar i;
+            aux1+=","+recursivo(i);
+        Terminar
+        Retornar aux1;
+    Terminar
+
+5.Navegabilidad: No hay.

@@ -1,0 +1,36 @@
+/*
+  Ejercicio 12
+  27 Septiembre 2017
+*/
+
+ALGORITMO 1.
+1.Meta: Desplegar los primeros n términos de la Serie Fibonacci.
+2.Datos: Utilizar un arreglo de apuntadores a objetos f[];
+        Escribir("¿Cuántos términos desea desplegar?"); c=?;
+        f=nuevo entero[c];
+        f[0]=0;
+        f[1]=1;
+        aux=f[0]+","+f[1];
+3.Cálculos: Empezar desde i=2; hasta i<c; incrementar i;
+                f[i]=f[i-1]+f[i-2];
+                aux+=","+f[i];
+            Terminar
+4.Resultados: Escribir(c+" términos: "+aux);
+5.Navegabilidad: No hay.
+
+
+ALGORITMO 2.
+1.Meta: Desplegar los primeros n términos de la Serie Fibonacci.
+2.Datos: f0=0;
+        f1=1;
+        fn=0;
+        aux=f0+","+fi;
+        Escribir("¿Cuántos términos desea desplegar?"); c=?;
+3.Cálculos: Empezar desde i=2; hasta i<c; incrementar i;
+                fn=f0+f1;
+                aux+=","+fn;
+                f0=f1;
+                f1=fn
+            Terminar
+4.Resultados: Escribir(aux);
+5.Navegabilidad: No hay.
