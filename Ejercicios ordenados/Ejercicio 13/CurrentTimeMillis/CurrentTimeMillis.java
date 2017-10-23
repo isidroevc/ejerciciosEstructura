@@ -1,7 +1,12 @@
-/*
-  29 Septiembre 2017
-  Ejercicio 13: currentTimeMillis()
-*/
+/**
+    Instituto Tecnológico de León.
+    Ingenieria En Sistemas Computacionales.
+    Estructura de datos.
+    Maestro: Ing. Cirino Silva Tovar.
+    Alumno Vásquez Cortés Isidro Emmanuel
+    Ejercicio 13.
+    Fecha de elaboración 22/10/2017
+ */
 
 
 public class CurrentTimeMillis{

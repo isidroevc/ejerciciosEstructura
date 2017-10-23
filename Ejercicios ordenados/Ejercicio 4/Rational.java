@@ -1,12 +1,4 @@
-/**
-    Instituto Tecnológico de León.
-    Ingenieria En Sistemas Computacionales.
-    Estructura de datos.
-    Maestro: Ing. Cirino Silva Tovar.
-    Alumno Vásquez Cortés Isidro Emmanuel
-    Ejercicio 3.
-    Fecha de elaboración 22/10/2017
- */
+
 public class Rational implements Rationalizable {
     // -Propiedades.
     private int numerator;
@@ -21,6 +13,7 @@ public class Rational implements Rationalizable {
             this.numerator *= -1;
             this.denominator *= -1;
         }
+        simplificarR(numerator, denominator);
     }
 
     public Rational() {}
@@ -126,5 +119,51 @@ public class Rational implements Rationalizable {
     @Override
     public String toString() {
         return this.numerator + "/" + this.denominator;
+    }
+
+    /*public void simplificarI(){
+        int n,d,signo,r;
+        // valores absolutos
+        n=Math.abs(numerator);
+        d=Math.abs(denominator);
+        // casos de numerador y denominador
+        if(numerator!=0 && denominator==0) // si es infinito
+            numerator=1;
+        else if(numerator==0 && denominator!=0) // si es 0
+            denominator=1;
+        else if(numerator!=0 && denominator!=0){ // fracción
+            signo=denominator/d; // signo de la fracción
+            while(n%d != 0){
+                r=n%d;
+                n=d;
+                d=r; // d se vuelve mcd
+            }
+            numerator=signo*(numerator/d);
+            denominator=signo*(denominator/d);
+        }
+    }*/
+    public void simplificarR(int n,int d){
+        int absN,absD,signo,mcd;
+        
+        absN=Math.abs(n);
+        absD=Math.abs(d);
+        
+        if(n!=0 && d==0)
+            numerator=1;
+        else if(n==0 && d!=0)
+            denominator=1;
+        else if(n!=0 && d!=0){
+            signo=d/absD;
+            mcd=mcd(absN,absD);
+            numerator=signo*(n/mcd);
+            denominator=signo*(d/mcd);
+        }
+    }
+    
+    public int mcd(int n,int d){
+        if(d==0)
+            return n;
+        else
+            return mcd(d,n%d);
     }
 }

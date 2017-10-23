@@ -1,5 +1,12 @@
-
-
+/**
+    Instituto Tecnológico de León.
+    Ingenieria En Sistemas Computacionales.
+    Estructura de datos.
+    Maestro: Ing. Cirino Silva Tovar.
+    Alumno Vásquez Cortés Isidro Emmanuel
+    Ejercicio 18.
+    Fecha de elaboración 22/10/2017
+ */
 import java.awt.Color;
 
 public class Turtle{

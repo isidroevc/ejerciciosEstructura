@@ -1,7 +1,12 @@
-/*
-  Ejercicio 15
-  02 Octubre 2017
-*/
+/**
+    Instituto Tecnológico de León.
+    Ingenieria En Sistemas Computacionales.
+    Estructura de datos.
+    Maestro: Ing. Cirino Silva Tovar.
+    Alumno Vásquez Cortés Isidro Emmanuel
+    Ejercicio 15.
+    Fecha de elaboración 22/10/2017
+ */
 import java.util.Scanner;
 public class Factorial{
     int fi, fr, n;

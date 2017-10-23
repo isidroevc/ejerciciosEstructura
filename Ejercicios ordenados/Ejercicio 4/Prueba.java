@@ -4,25 +4,18 @@
     Estructura de datos.
     Maestro: Ing. Cirino Silva Tovar.
     Alumno Vásquez Cortés Isidro Emmanuel
-    Ejercicio 7.
+    Ejercicio 4.
     Fecha de elaboración 22/10/2017
  */
-import java.io.FileOutputStream;
 import java.util.Random;
-import java.io.RandomAccessFile;
 import java.util.Scanner;
-import java.io.IOException;
 //import Rational;
 public class Prueba {
-
     private Scanner sc = new Scanner(System.in);
     String sum, res, mul, div, exp, neg;
     String leq, eq, geq;
     String mensaje;
     Rational[] r;
-    RandomAccessFile raf;
-    FileOutputStream fos;
-    int c = 0;
     void escribir(String s){
         System.out.println(s);
     }
@@ -33,22 +26,15 @@ public class Prueba {
     void inicio(){
         escribir("Este programa prueba las prestaciones de la clase rational");
     }
-    void abrirArchivoEntrada() throws IOException {
-        raf = new RandomAccessFile("RationalsData.txt", "r");
-    }
-    void abrirFlujoSalida() throws IOException {
-        fos = new FileOutputStream("Reporte.txt");
-    }
-    void datos() throws IOException, Exception{
-        String line;
-        abrirArchivoEntrada();
-        while(raf.readLine() != null)
-            c++;
-        raf.seek(0);
-        r = new Rational[c];
-        for(int i = 0; i < c; i++) 
-            r[i] = Rational.parse(raf.readLine());
-        raf.close();
+    void datos() {
+        Random rand = new Random();
+        int numerator, denominator;
+        r = new Rational[3];
+        for(int i = 0; i < 3; i++){
+            numerator = rand.nextInt() % 98;
+            denominator = rand.nextInt() % 98;
+            r[i] = new Rational(numerator, denominator);
+        }
     }
     void calculosRational() {
         sum = "Suma el rational actual con otro y retorna la suma\n";
@@ -57,7 +43,7 @@ public class Prueba {
         div = "Divide el rational actual con otro y retorna el resultado\n";
         neg = "Retorna el negativo del rational actual\n";
         exp = "Eleva el rational actual a la n \n";
-        for(int i = 1; i < c; i++){
+        for(int i = 1; i < 3; i++){
             sum += r[0] + " + "  + r[i] + " = " + r[0].addition(r[i]) + "\n";
             res += r[0] + " - "  + r[i] + " = " + r[0].substraction(r[i]) + "\n";
             mul += r[0] + " * "  + r[i] + " = " + r[0].multiplication(r[i]);
@@ -78,28 +64,53 @@ public class Prueba {
             eq += r[0] + " == " + r[i] + " -> " + r[0].equals(r[i]) + "\n";
             geq += r[0] + " >= " + r[i] + " -> " + r[0].greaterEquals(r[i])+ "\n";
         }
-    }   
-    void resultados() throws IOException {
-        mensaje = "Resultados Tipo Rational\n";
-        mensaje += sum + res + mul + div + neg + exp;
-        mensaje += "Resultdos Tipo Boolean\n";
-        mensaje += leq + eq + geq;
-        abrirFlujoSalida();
-        fos.write(mensaje.getBytes());
-        fos.close();
-        escribir("Listo, puede revisar el archivo Reporte.txt");
     }
+
+    void resultadosRational(){
+        mensaje = sum + res + mul + div + neg + exp;
+        escribir("Resultados de tipo Rational\n");
+        escribir(mensaje);
+        escribir("Presione enter para continuar al menu");
+        leer();
+        menu();
+    }
+    void resultadosBoolean() {
+        mensaje = leq + eq + geq;
+        escribir("Resultados de tipo Boolean");
+        escribir(mensaje);
+        escribir("Presione enter para continuar al menu");
+        leer();
+        menu();
+    }
+    void menu(){
+        int op = 0;
+        mensaje = "Que resultados va a desplegar?\n";
+        mensaje += "1.- Resultados Rational\n";
+        mensaje += "2.-Resultados Boolean\n";
+        mensaje += "3.-Salir\n";
+        escribir(mensaje);
+        while(op < 1 || op > 3){
+            try {op = Integer.parseInt(leer());}
+            catch(Exception ex) {
+                escribir("Elija una opcion del 1 al 3");
+            }
+        }
+        switch(op){
+            case 1: calculosRational(); 
+                    resultadosRational();
+            break;
+            case 2: calculosBoolean();
+                    resultadosBoolean();
+            break;
+            case 3: System.exit(0); break;
+        }
+    }
+
     public static void main(String[] args) {
         Prueba demo = new Prueba();
         demo.inicio();
-        try {
-            demo.datos();
-            demo.calculosRational();
-            demo.calculosBoolean();
-            demo.resultados();
-        } catch(Exception e){
-            demo.escribir("Ha ocurrido un error: " + e.getMessage());
-            System.exit(0);
-        }
+        demo.datos();
+        demo.menu();
     }
+
 }

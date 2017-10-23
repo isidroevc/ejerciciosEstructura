@@ -37,6 +37,7 @@ public class Rational implements Rationalizable {
             this.numerator *= -1;
             this.denominator *= -1;
         }
+        simplificarI();
     }
 
     public Rational() {}
@@ -142,5 +143,27 @@ public class Rational implements Rationalizable {
     @Override
     public String toString() {
         return this.numerator + "/" + this.denominator;
+    }
+
+    public void simplificarI(){
+        int n,d,signo,r;
+        // valores absolutos
+        n=Math.abs(numerator);
+        d=Math.abs(denominator);
+        // casos de numerador y denominador
+        if(numerator!=0 && denominator==0) // si es infinito
+            numerator=1;
+        else if(numerator==0 && denominator!=0) // si es 0
+            denominator=1;
+        else if(numerator!=0 && denominator!=0){ // fracción
+            signo=denominator/d; // signo de la fracción
+            while(n%d != 0){
+                r=n%d;
+                n=d;
+                d=r; // d se vuelve mcd
+            }
+            numerator=signo*(numerator/d);
+            denominator=signo*(denominator/d);
+        }
     }
 }
