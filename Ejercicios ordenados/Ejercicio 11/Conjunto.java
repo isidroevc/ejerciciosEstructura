@@ -82,9 +82,7 @@ public class Conjunto implements Conjuntable {
     @Override
     public Conjunto diferenciaSimetrica(Conjunto c) {
         Conjunto aux1 = this.union(c);
-        System.out.println("aux1 " + aux1);
         Conjunto aux2 = this.interseccion(c);
-        System.out.println("aux2 " + aux2);
         return aux1.diferencia(aux2);
     }
 
