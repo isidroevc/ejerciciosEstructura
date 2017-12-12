@@ -6,7 +6,6 @@
    capa del usuario
 */
 
-package AplicacionPorCapas;
 
 import java.awt.*;
 import java.awt.event.*;

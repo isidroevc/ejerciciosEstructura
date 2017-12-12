@@ -3,21 +3,26 @@ public class Cola<Ty> implements Encolable<Ty> {
     private Nodo<Ty> fin;
     private int longitud;
 
-    
+    public Cola(Ty[] arreglo) {
+        for(int i = 0, c = arreglo.length; i < c; i++)
+            this.insertar(arreglo[i]);
+    }
+
     public int longitud(){
         return longitud;
     }
 
     @Override
     public void insertar(Ty e) {
-        Nodo frenteAnterior = null;
+        Nodo finAnterior = null;
 
-        if(frente == null)
+        if(frente == null){ 
             this.frente = new Nodo<>(e);
+            this.fin = this.frente;
+        }
         else {
-            frenteAnterior = this.frente;
-            this.frente = new Nodo<>(e);
-            this.frente.setSiguiente(frenteAnterior);
+            this.fin.setSiguiente(new Nodo<>(e));
+            this.fin = fin.getSiguiente();
         }
         longitud++;
     }

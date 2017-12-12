@@ -4,7 +4,7 @@
    Modificado el 10 de marzo del 2011 para que se comporte graficamente.
 */
 
-package AplicacionPorCapas;
+
 
 import java.io.*;
 import java.util.*;

@@ -13,7 +13,6 @@
   y la suma
 */
 
-package AplicacionPorCapas;
 
 import javax.swing.JOptionPane;
 
