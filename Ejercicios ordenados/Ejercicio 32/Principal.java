@@ -2,15 +2,14 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
-public class Principal extends JApplet {
+public class Principal extends JFrame {
     JTextField ndiscos;
     JButton VerSolucion;
     JLabel l;
 
-    public void init() {
+    public Principal () {
         JPanel p=new JPanel();
         l=new JLabel("Numero de Discos");
         ndiscos=new JTextField(6);
@@ -27,9 +26,16 @@ public class Principal extends JApplet {
                 tf.setTitle("Solucion Torres de Hanoi");
             }
         });
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(640, 480);
         p.add(l);
         p.add(ndiscos);
         p.add(VerSolucion);
         add(p);
     }
-}
+
+    public static void main(String args[]){
+        Principal prueba =  new Principal();
+        prueba.setVisible(true);
+    }
+ }
